@@ -487,9 +487,13 @@ footer { background: #333; color: white; text-align: center; padding: 2rem 1rem;
         border: none;
         cursor: pointer;
         z-index: 1001; /* Ensure it's on top */
+        position: absolute;
+        right: 1rem; /* or whatever spacing you want */
+        top: 50%;
+        transform: translateY(-50%);
     }
     .nav-links {
-        display: flex !important; /* Hide the links by default on mobile */
+        display: none; /* Hide the links by default on mobile */
         flex-direction: column; /* Stack links vertically */
         position: fixed; /* Position it over the page content */
         top: 0;
