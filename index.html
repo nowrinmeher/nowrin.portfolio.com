@@ -1081,36 +1081,6 @@ footer { background: #333; color: white; text-align: center; padding: 2rem 1rem;
                 });
             });
         
-            // --- MOBILE MENU TOGGLE ---
-            function setupMobileMenu() {
-                const navContainer = document.querySelector('.nav-container');
-                if (!navContainer || !navLinksContainer) return;
-
-                let menuToggle = navContainer.querySelector('.mobile-menu-toggle');
-                if (!menuToggle) {
-                    menuToggle = document.createElement('button');
-                    menuToggle.innerHTML = '☰';
-                    menuToggle.className = 'mobile-menu-toggle';
-                    menuToggle.style.cssText = `background:none; border:none; color:white; font-size:1.8rem; cursor:pointer; display:none; z-index: 1001;`;
-                    navContainer.appendChild(menuToggle);
-
-                    menuToggle.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        navLinksContainer.classList.toggle('active');
-                    });
-                }
-                
-                // Show/hide based on screen size
-                if (window.innerWidth <= 768) {
-                    menuToggle.style.display = 'block';
-                } else {
-                    menuToggle.style.display = 'none';
-                    navLinksContainer.classList.remove('active');
-                }
-            }
-
-            setupMobileMenu();
-            window.addEventListener('resize', setupMobileMenu);
 
         });
 
