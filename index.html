@@ -476,22 +476,8 @@ footer { background: #333; color: white; text-align: center; padding: 2rem 1rem;
     .cta-button { padding: 1rem 2.5rem; font-size: 1rem; }
     /* ... and so on ... */
 
-    /* --- REPLACEMENT FOR .nav-links AND NEW STYLES FOR HAMBURGER MENU --- */
-
     /* The hamburger icon (the '≡' button) */
-    .hamburger-menu {
-        display: block; /* Show the hamburger icon on mobile */
-        font-size: 2rem; /* Make the icon bigger */
-        color: white;
-        background: none;
-        border: none;
-        cursor: pointer;
-        z-index: 1001; /* Ensure it's on top */
-        position: absolute;
-        right: 1rem; /* or whatever spacing you want */
-        top: 50%;
-        transform: translateY(-50%);
-    }
+
     .nav-links {
         display: none; /* Hide the links by default on mobile */
         flex-direction: column; /* Stack links vertically */
@@ -530,33 +516,7 @@ footer { background: #333; color: white; text-align: center; padding: 2rem 1rem;
             </ul>
         </div>
     </nav>
-<!-- Add this script at the bottom of your HTML body -->
-<script>
-// Find the hamburger button and the navigation links menu in the document
-const hamburger = document.querySelector('.hamburger-menu');
-const navLinks = document.querySelector('.nav-links');
 
-// Add a click event listener to the hamburger button
-hamburger.addEventListener('click', () => {
-    // When clicked, add or remove the 'open' class from the nav links
-    navLinks.classList.toggle('open');
-});
-
-// Optional: Close menu when a link is clicked
-navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-    });
-});
-
-// --- Optional: Animate links one by one ---
-const navItems = document.querySelectorAll('.nav-links a');
-
-navItems.forEach((item, index) => {
-    item.style.transitionDelay = `${index * 0.1}s`;  // Delay each link
-});
-
-</script>
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-container">
