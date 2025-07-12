@@ -290,37 +290,121 @@ nav.scrolled {
 }
 
 .hero-video {
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    aspect-ratio: 16 / 9;
-    margin: 0 auto;
-    border-radius: 20px;
-    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
-    animation: fadeInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s forwards;
-    overflow: hidden;
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+   width: 100%;
+   height: 100vh;
+   position: relative;
+   overflow: hidden;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
-.hero-content.scrolled {
-    opacity: 0;
-    transform: translateY(-80px) scale(0.85);
-    filter: blur(5px);
-}
-.hero-video.scrolled {
-    opacity: 0;
-    transform: translateY(-60px) scale(0.9) rotateX(10deg);
-    filter: blur(8px);
+.video-container { 
+   position: relative; 
+   width: 80%; 
+   height: 70%;
+   background: #2c3e50;
+   border-radius: 20px;
+   padding: 20px;
+   box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+   border: 8px solid #34495e;
+} 
+
+.video-container::before {
+   content: '';
+   position: absolute;
+   top: -15px;
+   left: 50%;
+   transform: translateX(-50%);
+   width: 80px;
+   height: 15px;
+   background: #34495e;
+   border-radius: 0 0 8px 8px;
+   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-.video-container { position: relative; width: 100%; height: 100%; }
-.profile-video { width: 100%; height: 100%; object-fit: cover; }
-.video-controls { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; opacity: 1; transition: opacity 0.3s ease, transform 0.3s ease; }
-.video-container.playing:not(:hover) .video-controls { opacity: 0; pointer-events: none; }
-.play-pause-btn { background: rgba(255, 255, 255, 0.15); border: 2px solid rgba(255, 255, 255, 0.6); border-radius: 50%; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(10px); }
-.play-pause-btn:hover { background: rgba(255, 255, 255, 0.25); border-color: rgba(255, 255, 255, 0.8); transform: scale(1.1); }
-.play-pause-btn svg { width: 32px; height: 32px; fill: rgba(255, 255, 255, 0.9); }
+.video-container::after {
+   content: '';
+   position: absolute;
+   bottom: -30px;
+   left: 50%;
+   transform: translateX(-50%);
+   width: 200px;
+   height: 30px;
+   background: #34495e;
+   border-radius: 15px;
+   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
 
+.profile-video { 
+   width: 100%; 
+   height: 100%; 
+   object-fit: contain;
+   border-radius: 12px;
+   background: #000;
+} 
+
+.video-thumbnail {
+   position: absolute;
+   top: 20px;
+   left: 20px;
+   right: 20px;
+   bottom: 20px;
+   background-image: url('thumbnail.png');
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-color: #000;
+   border-radius: 12px;
+   z-index: 5;
+   transition: opacity 0.3s ease;
+}
+
+.video-container.playing .video-thumbnail {
+   opacity: 0;
+   pointer-events: none;
+}
+
+.video-controls { 
+   position: absolute; 
+   top: 50%; 
+   left: 50%; 
+   transform: translate(-50%, -50%); 
+   z-index: 10; 
+   opacity: 1; 
+   transition: opacity 0.3s ease, transform 0.3s ease; 
+} 
+
+.video-container.playing:not(:hover) .video-controls { 
+   opacity: 0; 
+   pointer-events: none; 
+} 
+
+.play-pause-btn { 
+   background: rgba(255, 255, 255, 0.15); 
+   border: 2px solid rgba(255, 255, 255, 0.6); 
+   border-radius: 50%; 
+   width: 80px; 
+   height: 80px; 
+   display: flex; 
+   align-items: center; 
+   justify-content: center; 
+   cursor: pointer; 
+   transition: all 0.3s ease; 
+   backdrop-filter: blur(10px); 
+} 
+
+.play-pause-btn:hover { 
+   background: rgba(255, 255, 255, 0.25); 
+   border-color: rgba(255, 255, 255, 0.8); 
+   transform: scale(1.1); 
+} 
+
+.play-pause-btn svg { 
+   width: 32px; 
+   height: 32px; 
+   fill: rgba(255, 255, 255, 0.9); 
+}
 /* ======================================================= */
 /* === 5. CONTENT SECTIONS =============================== */
 /* ======================================================= */
@@ -523,23 +607,21 @@ footer { background: #333; color: white; text-align: center; padding: 2rem 1rem;
             <div class="hero-content">
                 <h1>Hi, <span style="color:color: rgb(62, 65, 19);">It's Nowrin</span></h1>
                 <p class="subtitle">Software Developer & AI Specialist</p>
-                <p>I create stunning websites with modern technologies and AI-driven solutions. From Ride-Sharing platforms, E-commerce websites, Database Managent to machine learning applications with integrating XAI, I bring your digital ideas to life with clean code and innovative design.</p>
+                <p>I create stunning websites with modern technologies and AI-driven solutions. From Ride-Sharing platforms, E-commerce websites, Database Management to machine learning applications with integrating XAI, I bring your digital ideas to life with clean code and innovative design.</p>
                 <a href="#contact" class="cta-button">Let's Talk</a>
             </div>
 
-            <!-- Video Section -->
             <div class="hero-video" id="heroVideo">
                 <div class="video-container" id="videoContainer">
                     <video id="scrollVideo" loop muted playsinline class="profile-video">
-                        <source src="own.mp4" type="video/mp4">
+                        <source src="portfolio.mp4" type="video/mp4">
                     </video>
+                    <div class="video-thumbnail" id="videoThumbnail"></div>
                     <div class="video-controls" id="videoControls">
                         <button class="play-pause-btn" id="playPauseBtn" onclick="toggleVideo()">
-                            <!-- Play icon (shown by default) -->
                             <svg id="playIcon" viewBox="0 0 24 24">
                                 <path d="M8 5v14l11-7z"/>
                             </svg>
-                            <!-- Pause icon (hidden by default) -->
                             <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none;">
                                 <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
                             </svg>
